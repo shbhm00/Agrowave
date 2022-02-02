@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Modal from '../componnets/modal';
 import {LIVE_URL} from '../constant';
-export default function App() {
+export default function HomeScreen() {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [amount, setAmount] = useState('');
