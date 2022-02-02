@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
   Text,
+  StyleSheet,
 } from 'react-native';
 import {LIST_URL} from '../constant';
 
@@ -33,17 +34,7 @@ export default function modal({visible, submit}) {
   const renderItem = item => {
     return (
       <View>
-        <TouchableOpacity
-          style={{
-            flexDirection: 'row',
-            marginBottom: 10,
-            borderWidth: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: 40,
-            borderRadius: 30,
-          }}
-          onPress={() => submit(item[0])}>
+        <TouchableOpacity style={styles.button} onPress={() => submit(item[0])}>
           <Text style={{marginHorizontal: 10}}>{item[0]}</Text>
           <Text>{item[1]}</Text>
         </TouchableOpacity>
@@ -64,28 +55,10 @@ export default function modal({visible, submit}) {
         transparent={true}
         style={{backgroundColor: 'rgba(0,0,0,0.7)'}}
         visible={visible}>
-        <View
-          style={{
-            backgroundColor: '#b3b3b3',
-            height: '70%',
-            top: '30%',
-            width: '100%',
-            marginTop: 50,
-            padding: 50,
-            borderRadius: 40,
-            borderWidth: 1,
-            borderColor: 'black',
-          }}>
+        <View style={styles.container}>
           <TextInput
             placeholder="Search"
-            style={{
-              padding: 15,
-              backgroundColor: 'white',
-              marginBottom: 20,
-              borderWidth: 1,
-              borderColor: 'black',
-              borderRadius: 50,
-            }}
+            style={styles.input}
             autoFocus
             onChangeText={text => onchange(text)}
           />
@@ -98,3 +71,33 @@ export default function modal({visible, submit}) {
     </View>
   );
 }
+const styles = StyleSheet.create({
+  input: {
+    padding: 15,
+    backgroundColor: 'white',
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 50,
+  },
+  container: {
+    backgroundColor: '#b3b3b3',
+    height: '70%',
+    top: '30%',
+    width: '100%',
+    marginTop: 50,
+    padding: 50,
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: 'black',
+  },
+  button: {
+    flexDirection: 'row',
+    marginBottom: 10,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 40,
+    borderRadius: 30,
+  },
+});
